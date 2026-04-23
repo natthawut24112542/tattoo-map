@@ -90,6 +90,12 @@
             margin-bottom: 14px;
             border: none;
             cursor: pointer;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .btn:active {
+            opacity: 0.8;
+            transform: scale(0.98);
         }
 
         .btn-book { background-color: #d32f2f; }
@@ -144,6 +150,11 @@
             text-decoration: none;
             flex: 1;
             cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .nav-item:active {
+            opacity: 0.8;
         }
 
         .nav-item.active {
@@ -193,49 +204,74 @@
 
     <!-- เมนูด้านล่าง -->
     <div class="bottom-nav">
-        <a href="#" class="nav-item active">
+        <a href="#" class="nav-item active" onclick="setActive(this); return false;">
             <i>🏠</i>
             <span>หน้าแรก</span>
         </a>
-        <a onclick="openMap()" class="nav-item">
+        <a onclick="openMap(); setActive(this);" class="nav-item" style="cursor: pointer;">
             <i>🗺️</i>
             <span>ลายแผนที่</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="#" class="nav-item" onclick="setActive(this); return false;">
             <i>🎉</i>
             <span>โปรโมชั่น</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="#" class="nav-item" onclick="setActive(this); return false;">
             <i>📞</i>
             <span>ติดต่อ</span>
         </a>
     </div>
 
     <script>
+        // ฟังก์ชันโทรศัพท์
         function makeCall(number) {
+            if (!number || !/^\d+$/.test(number.replace('-', ''))) {
+                console.error('หมายเลขโทรศัพท์ไม่ถูกต้อง');
+                return;
+            }
             window.location.href = "tel:" + number;
         }
 
+        // ฟังก์ชันเปิด Line
         function openLineProfile() {
-            const lineDeepLink = "line://ti/p/@wut2542m";
-            const fallback = "https://line.me/ti/p/@wut2542m";
+            const lineId = "wut2542m";
+            const lineDeepLink = "line://ti/p/@" + lineId;
+            const fallback = "https://line.me/ti/p/@" + lineId;
+            
             window.location.href = lineDeepLink;
-            setTimeout(() => { window.location.href = fallback; }, 800);
+            setTimeout(() => { 
+                window.location.href = fallback; 
+            }, 800);
         }
 
+        // ฟังก์ชันเปิด Messenger
         function goToMessenger() {
             window.location.href = "https://m.me/Singla2411";
         }
 
+        // ฟังก์ชันเปิด Facebook Profile
         function openFacebookProfile() {
-            const fbDeepLink = "fb://facewebmodal/f?href=https://www.facebook.com/search/top?q=yourprofile";
-            const fallback = "https://www.facebook.com/search/top?q=yourprofile";
+            // เปลี่ยนเป็น Facebook ID จริงของคุณ (ควรใช้ Facebook ID แทน username)
+            const fbId = "100000000000000"; // ✏️ ใส่ Facebook ID จริงของคุณ
+            const fbDeepLink = "fb://facewebmodal/f?href=https://www.facebook.com/" + fbId;
+            const fallback = "https://www.facebook.com/" + fbId;
+            
             window.location.href = fbDeepLink;
-            setTimeout(() => { window.location.href = fallback; }, 800);
+            setTimeout(() => { 
+                window.location.href = fallback; 
+            }, 800);
         }
 
+        // ฟังก์ชันเปิดแผนที่
         function openMap() {
             window.location.href = "https://maps.app.goo.gl/MLGPYY6xU5M1KA147";
+        }
+
+        // ฟังก์ชันสำหรับตั้งค่า active nav item
+        function setActive(element) {
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
         }
     </script>
 
