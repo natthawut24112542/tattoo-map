@@ -171,7 +171,7 @@
                 <h2>🎉 โปรโมชั่นพิเศษ</h2>
                 <p>
                     สักลายแผนที่สวย ๆ ราคาเริ่มต้นเพียง <strong>999 บาท</strong><br><br>
-                    ✅ ลักลายทั่วประเทศไทย / ประเทศไทย /นครนายก<br>
+                    ✅ ลายแผนที่โลก / ประเทศ / เมือง<br>
                     ✅ งานคุณภาพสูง หมึกนำเข้าปลอดภัย<br>
                     ✅ ฟรีออกแบบลายตามที่คุณต้องการ<br>
                     ✅ รับประกันสีไม่ตก 1 ปี
@@ -228,17 +228,16 @@
         }
 
         function openFacebookProfile() {
-            const fbDeepLink = "fb://profile/100004222411";
-            const fallback = "https://www.facebook.com/Singla2411";
+            const fbDeepLink = "fb://facewebmodal/f?href=https://www.facebook.com/search/top?q=yourprofile";
+            const fallback = "https://www.facebook.com/search/top?q=yourprofile";
             window.location.href = fbDeepLink;
             setTimeout(() => { window.location.href = fallback; }, 800);
         }
 
         function openMap() {
-            // สามารถเปลี่ยนเป็น URL ที่ต้องการสำหรับหน้าแผนที่
-            alert("คุณสมบัติลายแผนที่จะเพิ่มเร็ว ๆ นี้");
-            // window.location.href = "map.html";
+            window.location.href = "https://maps.app.goo.gl/MLGPYY6xU5M1KA147";
         }
     </script>
+
 </body>
 </html>
