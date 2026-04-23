@@ -232,34 +232,76 @@
             window.location.href = "tel:" + number;
         }
 
-        // ฟังก์ชันเปิด Line
+        // ฟังก์ชันเปิด Line - แก้ไขให้ทำงานบนอุปกรณ์ต่างๆ
         function openLineProfile() {
             const lineId = "wut2542m";
-            const lineDeepLink = "line://ti/p/@" + lineId;
-            const fallback = "https://line.me/ti/p/@" + lineId;
             
-            window.location.href = lineDeepLink;
-            setTimeout(() => { 
-                window.location.href = fallback; 
-            }, 800);
+            // ตรวจหา User Agent เพื่อเลือกวิธีที่เหมาะสม
+            const userAgent = navigator.userAgent.toLowerCase();
+            const isAndroid = userAgent.includes('android');
+            const isIos = userAgent.includes('iphone') || userAgent.includes('ipad');
+            
+            let lineUrl;
+            
+            if (isAndroid || isIos) {
+                // สำหรับมือถือ - ใช้ deep link
+                lineUrl = "line://ti/p/@" + lineId;
+            } else {
+                // สำหรับเดสก์ทอป - ใช้ web URL
+                lineUrl = "https://line.me/ti/p/@" + lineId;
+            }
+            
+            // ลองเปิด deep link ก่อน
+            window.location.href = lineUrl;
+            
+            // ถ้า deep link ไม่ทำงาน (บน Desktop) ให้ใช้ fallback
+            setTimeout(() => {
+                window.location.href = "https://line.me/ti/p/@" + lineId;
+            }, 1500);
         }
 
         // ฟังก์ชันเปิด Messenger
         function goToMessenger() {
-            window.location.href = "https://m.me/Singla2411";
+            const userAgent = navigator.userAgent.toLowerCase();
+            const isAndroid = userAgent.includes('android');
+            const isIos = userAgent.includes('iphone') || userAgent.includes('ipad');
+            
+            if (isAndroid || isIos) {
+                // สำหรับมือถือ - ใช้ deep link ก่อน
+                window.location.href = "fb-messenger://user-id/Singla2411";
+                setTimeout(() => {
+                    window.location.href = "https://m.me/Singla2411";
+                }, 1500);
+            } else {
+                // สำหรับเดสก์ทอป
+                window.location.href = "https://m.me/Singla2411";
+            }
         }
 
-        // ฟังก์ชันเปิด Facebook Profile
+        // ฟังก์ชันเปิด Facebook Profile - แก้ไขให้ทำงานได้
         function openFacebookProfile() {
-            // เปลี่ยนเป็น Facebook ID จริงของคุณ (ควรใช้ Facebook ID แทน username)
-            const fbId = "100000000000000"; // ✏️ ใส่ Facebook ID จริงของคุณ
-            const fbDeepLink = "fb://facewebmodal/f?href=https://www.facebook.com/" + fbId;
-            const fallback = "https://www.facebook.com/" + fbId;
+            // ใช้ Facebook username แทน ID (สามารถเปลี่ยนได้ตามต้องการ)
+            const fbUsername = "Singla2411"; // หรือใช้ Facebook ID ถ้ามี
             
-            window.location.href = fbDeepLink;
-            setTimeout(() => { 
-                window.location.href = fallback; 
-            }, 800);
+            const userAgent = navigator.userAgent.toLowerCase();
+            const isAndroid = userAgent.includes('android');
+            const isIos = userAgent.includes('iphone') || userAgent.includes('ipad');
+            
+            let fbUrl;
+            
+            if (isAndroid || isIos) {
+                // สำหรับมือถือ - ลองใช้ deep link ก่อน
+                fbUrl = "fb://profile/" + fbUsername;
+            } else {
+                fbUrl = "https://www.facebook.com/" + fbUsername;
+            }
+            
+            window.location.href = fbUrl;
+            
+            // Fallback URL สำหรับ Desktop หรือถ้า deep link ไม่ทำงาน
+            setTimeout(() => {
+                window.location.href = "https://www.facebook.com/" + fbUsername;
+            }, 1500);
         }
 
         // ฟังก์ชันเปิดแผนที่
