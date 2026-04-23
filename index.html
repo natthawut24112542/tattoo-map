@@ -278,30 +278,27 @@
             }
         }
 
-        // ฟังก์ชันเปิด Facebook Profile - แก้ไขให้ทำงานได้
+        // ฟังก์ชันเปิด Facebook Profile - แก้ไขให้ใช้ URL ที่ถูกต้อง
         function openFacebookProfile() {
-            // ใช้ Facebook username แทน ID (สามารถเปลี่ยนได้ตามต้องการ)
-            const fbUsername = "Singla2411"; // หรือใช้ Facebook ID ถ้ามี
+            const fbUrl = "https://www.facebook.com/Singla2411";
             
             const userAgent = navigator.userAgent.toLowerCase();
             const isAndroid = userAgent.includes('android');
             const isIos = userAgent.includes('iphone') || userAgent.includes('ipad');
             
-            let fbUrl;
-            
             if (isAndroid || isIos) {
                 // สำหรับมือถือ - ลองใช้ deep link ก่อน
-                fbUrl = "fb://profile/" + fbUsername;
+                const fbDeepLink = "fb://profile/Singla2411";
+                window.location.href = fbDeepLink;
+                
+                // Fallback ถ้า deep link ไม่ทำงาน
+                setTimeout(() => {
+                    window.location.href = fbUrl;
+                }, 1500);
             } else {
-                fbUrl = "https://www.facebook.com/" + fbUsername;
+                // สำหรับเดสก์ทอป - ใช้ URL โดยตรง
+                window.location.href = fbUrl;
             }
-            
-            window.location.href = fbUrl;
-            
-            // Fallback URL สำหรับ Desktop หรือถ้า deep link ไม่ทำงาน
-            setTimeout(() => {
-                window.location.href = "https://www.facebook.com/" + fbUsername;
-            }, 1500);
         }
 
         // ฟังก์ชันเปิดแผนที่
