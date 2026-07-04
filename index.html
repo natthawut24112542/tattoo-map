@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>สักลายแผนที่ - Tattoo Map</title>
+    <title>ณัฐวุฒิ สิงห์ลา (วุฒิ) - Personal Profile</title>
     <style>
+        /* รีเซ็ตค่าเริ่มต้น */
         * {
             margin: 0;
             padding: 0;
@@ -12,307 +13,172 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #f8f9fa;   /* พื้นหลังใหม่ */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
             display: flex;
             justify-content: center;
             min-height: 100vh;
         }
 
-        .app-container {
+        .profile-container {
             width: 100%;
-            max-width: 450px;
-            background-color: white;
+            max-width: 480px;
+            background-color: #ffffff;
             min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0,0,0,0.08);
-            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             position: relative;
-            padding-bottom: 70px;
+            padding-bottom: 40px;
         }
 
-        .header {
-            background: linear-gradient(135deg, #0f2b5e, #4a1b6e, #9c2a6e);  /* สีใหม่เข้มขึ้น */
-            color: white;
-            padding: 45px 20px 35px;
+        /* ส่วนรูปหน้าปก (Cover Photo) */
+        .cover-photo {
+            width: 100%;
+            height: 220px;
+            background-color: #3b5998; /* สีพื้นหลังสำรองหากรูปยังไม่โหลด */
+        }
+
+        .cover-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ส่วนข้อมูลโปรไฟล์ (Profile Header) */
+        .profile-header {
             text-align: center;
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
+            padding: 0 20px;
+            position: relative;
+            margin-top: -80px;
         }
 
-        .header h1 {
-            font-size: 28px;
+        .profile-pic {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 5px solid #ffffff;
+            background-color: #e4e6eb;
+            object-fit: cover;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        .name {
+            font-size: 26px;
+            font-weight: bold;
+            color: #1c1e21;
+            margin-top: 15px;
             margin-bottom: 6px;
         }
 
-        .header p {
-            font-size: 18px;
-            opacity: 0.95;
-        }
-
-        .content {
-            padding: 20px 15px;
-        }
-
-        /* โปรโมชั่นการ์ดหลัก */
-        .promo-card {
-            background: linear-gradient(135deg, #fff5f5, #ffebee);
-            border-radius: 20px;
-            padding: 25px 20px;
-            margin-bottom: 30px;
-            border: 2px solid #d32f2f;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.15);
-        }
-
-        .promo-card h2 {
-            color: #d32f2f;
-            font-size: 24px;
-            margin-bottom: 12px;
-        }
-
-        .promo-card p {
-            font-size: 17px;
+        .bio {
+            font-size: 15px;
+            color: #65676b;
             line-height: 1.6;
-            color: #333;
+            margin-bottom: 24px;
         }
 
-        /* ปุ่ม */
+        /* กล่องข้อมูลส่วนตัว (Info Card) */
+        .info-card {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 0 20px 24px;
+            text-align: left;
+            border: 1px solid #e4e6eb;
+        }
+
+        .info-item {
+            font-size: 15px;
+            color: #1c1e21;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            margin-right: 12px;
+            font-size: 18px;
+        }
+
+        /* ส่วนปุ่มกด (Action Buttons) */
+        .action-buttons {
+            padding: 0 20px;
+        }
+
         .btn {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 100%;
-            padding: 16px;
-            color: white;
-            text-align: center;
+            padding: 14px;
+            color: #ffffff;
             text-decoration: none;
-            border-radius: 14px;
+            border-radius: 10px;
             font-weight: bold;
-            font-size: 17px;
-            margin-bottom: 14px;
+            font-size: 16px;
+            margin-bottom: 12px;
             border: none;
-            cursor: pointer;
-            transition: opacity 0.2s, transform 0.2s;
+            transition: opacity 0.2s ease, transform 0.1s ease;
         }
 
         .btn:active {
-            opacity: 0.8;
+            opacity: 0.9;
             transform: scale(0.98);
         }
 
-        .btn-book { background-color: #d32f2f; }
-        .btn-call { background-color: #28a745; }
-        .btn-line { background-color: #00c300; }
+        /* สีและไอคอนของปุ่ม */
+        .btn-call { background-color: #333333; }
+        .btn-line { background-color: #06C755; }
         .btn-messenger { background-color: #0084FF; }
+        .btn-facebook { background-color: #1877F2; }
 
-        /* ปุ่ม Facebook */
-        .btn-facebook {
-            background-color: #1877F2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            height: 54px;
-        }
-
-        .fb-profile {
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            color: #1877F2;
-            border: 2px solid white;
-        }
-
-        /* เมนูด้านล่าง */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 450px;
-            background-color: white;
-            border-top: 1px solid #ddd;
-            display: flex;
-            justify-content: space-around;
-            padding: 8px 0 4px;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-            z-index: 100;
-        }
-
-        .nav-item {
-            text-align: center;
-            color: #666;
-            font-size: 12px;
-            text-decoration: none;
-            flex: 1;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .nav-item:active {
-            opacity: 0.8;
-        }
-
-        .nav-item.active {
-            color: #d32f2f;
-            font-weight: bold;
-        }
-
-        .nav-item i {
-            display: block;
-            font-size: 22px;
-            margin-bottom: 3px;
-        }
     </style>
 </head>
 <body>
 
-    <div class="app-container">
-        <div class="header">
-            <h1>ยินดีต้อนรับสู่เว็บไซต์</h1>
-            <p>ลายสักเพื่อนเก่ง original</p>
+    <div class="profile-container">
+        
+        <!-- รูปหน้าปก: ให้บันทึกรูปของคุณเป็นชื่อ cover.jpg ไว้ในโฟลเดอร์เดียวกับเว็บ -->
+        <div class="cover-photo">
+            <img src="cover.jpg" alt="Cover Photo" onerror="this.style.display='none'">
         </div>
 
-        <div class="content">
-            <div class="promo-card">
-                <h2>🎉 โปรโมชั่นพิเศษ</h2>
-                <p>
-                    สักลายแผนที่สวย ๆ ราคาเริ่มต้นเพียง <strong>999 บาท</strong><br><br>
-                    ✅ ลายแผนที่โลก / ประเทศ / เมือง<br>
-                    ✅ งานคุณภาพสูง หมึกนำเข้าปลอดภัย<br>
-                    ✅ ฟรีออกแบบลายตามที่คุณต้องการ<br>
-                    ✅ รับประกันสีไม่ตก 1 ปี
-                </p>
+        <div class="profile-header">
+            <!-- รูปโปรไฟล์: ให้บันทึกรูปของคุณเป็นชื่อ profile.jpg ไว้ในโฟลเดอร์เดียวกับเว็บ -->
+            <img src="profile.jpg" alt="Profile Picture" class="profile-pic" onerror="this.src='https://via.placeholder.com/160x160?text=Profile'">
+            
+            <h1 class="name">ณัฐวุฒิ สิงห์ลา (วุฒิ)</h1>
+            <p class="bio">ยินดีต้อนรับสู่หน้าโปรไฟล์ของผมครับ<br>นักพัฒนาซอฟต์แวร์ และผู้หลงใหลในงานอิเล็กทรอนิกส์</p>
+        </div>
+
+        <!-- ข้อมูลส่วนตัว -->
+        <div class="info-card">
+            <div class="info-item">
+                <span class="info-icon">🎂</span>
+                <span><strong>วันเกิด:</strong> 24 พฤศจิกายน 2542 (อายุ 27 ปี)</span>
             </div>
-
-            <h3 style="margin: 10px 0 15px; color: #333;">📍 ติดต่อสอบถาม / จองคิว</h3>
-
-            <button class="btn btn-call" onclick="makeCall('0630687231')">📞 โทร: 063-068-7231</button>
-            <button class="btn btn-line" onclick="openLineProfile()">💬 สอบถามทาง Line (ID: wut2542m)</button>
-            <button class="btn btn-messenger" onclick="goToMessenger()">💬 ส่งข้อความ Messenger</button>
-            
-            <button class="btn btn-facebook" onclick="openFacebookProfile()">
-                <div class="fb-profile">👤</div>
-                <span>ดูโปรไฟล์ Facebook</span>
-            </button>
+            <div class="info-item">
+                <span class="info-icon">💻</span>
+                <span><strong>ความสนใจ:</strong> นักพัฒนาซอฟต์แวร์, ระบบ Android, และงาน DIY อิเล็กทรอนิกส์ (วงจรเครื่องเสียง ZK-TB21)</span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">📍</span>
+                <span><strong>พิกัด:</strong> จ.นครนายก, ประเทศไทย</span>
+            </div>
         </div>
+
+        <!-- ปุ่มติดต่อ -->
+        <div class="action-buttons">
+            <a href="tel:0646783822" class="btn btn-call">📞 โทร: 064-678-3822</a>
+            <a href="https://line.me/ti/p/~w2542m" target="_blank" class="btn btn-line">🟢 เพิ่มเพื่อนผ่าน Line (ID: w2542m)</a>
+            <a href="https://m.me/Singla2411" target="_blank" class="btn btn-messenger">💬 ทักแชท Messenger</a>
+            <a href="https://www.facebook.com/share/1AtpTV2RYa/" target="_blank" class="btn btn-facebook">🔵 โปรไฟล์ Facebook</a>
+        </div>
+
     </div>
-
-    <!-- เมนูด้านล่าง -->
-    <div class="bottom-nav">
-        <a href="#" class="nav-item active" onclick="setActive(this); return false;">
-            <i>🏠</i>
-            <span>หน้าแรก</span>
-        </a>
-        <a onclick="openMap(); setActive(this);" class="nav-item" style="cursor: pointer;">
-            <i>🗺️</i>
-            <span>ลายแผนที่</span>
-        </a>
-        <a href="#" class="nav-item" onclick="setActive(this); return false;">
-            <i>🎉</i>
-            <span>โปรโมชั่น</span>
-        </a>
-        <a href="#" class="nav-item" onclick="setActive(this); return false;">
-            <i>📞</i>
-            <span>ติดต่อ</span>
-        </a>
-    </div>
-
-    <script>
-        // ฟังก์ชันโทรศัพท์
-        function makeCall(number) {
-            if (!number || !/^\d+$/.test(number.replace('-', ''))) {
-                console.error('หมายเลขโทรศัพท์ไม่ถูกต้อง');
-                return;
-            }
-            window.location.href = "tel:" + number;
-        }
-
-        // ฟังก์ชันเปิด Line - แก้ไขให้ทำงานบนอุปกรณ์ต่างๆ
-        function openLineProfile() {
-            const lineId = "wut2542m";
-            
-            // ตรวจหา User Agent เพื่อเลือกวิธีที่เหมาะสม
-            const userAgent = navigator.userAgent.toLowerCase();
-            const isAndroid = userAgent.includes('android');
-            const isIos = userAgent.includes('iphone') || userAgent.includes('ipad');
-            
-            let lineUrl;
-            
-            if (isAndroid || isIos) {
-                // สำหรับมือถือ - ใช้ deep link
-                lineUrl = "line://ti/p/@" + lineId;
-            } else {
-                // สำหรับเดสก์ทอป - ใช้ web URL
-                lineUrl = "https://line.me/ti/p/@" + lineId;
-            }
-            
-            // ลองเปิด deep link ก่อน
-            window.location.href = lineUrl;
-            
-            // ถ้า deep link ไม่ทำงาน (บน Desktop) ให้ใช้ fallback
-            setTimeout(() => {
-                window.location.href = "https://line.me/ti/p/@" + lineId;
-            }, 1500);
-        }
-
-        // ฟังก์ชันเปิด Messenger
-        function goToMessenger() {
-            const userAgent = navigator.userAgent.toLowerCase();
-            const isAndroid = userAgent.includes('android');
-            const isIos = userAgent.includes('iphone') || userAgent.includes('ipad');
-            
-            if (isAndroid || isIos) {
-                // สำหรับมือถือ - ใช้ deep link ก่อน
-                window.location.href = "fb-messenger://user-id/Singla2411";
-                setTimeout(() => {
-                    window.location.href = "https://m.me/Singla2411";
-                }, 1500);
-            } else {
-                // สำหรับเดสก์ทอป
-                window.location.href = "https://m.me/Singla2411";
-            }
-        }
-
-        // ฟังก์ชันเปิด Facebook Profile - แก้ไขให้ใช้ URL ที่ถูกต้อง
-        function openFacebookProfile() {
-            const fbUrl = "https://www.facebook.com/Singla2411";
-            
-            const userAgent = navigator.userAgent.toLowerCase();
-            const isAndroid = userAgent.includes('android');
-            const isIos = userAgent.includes('iphone') || userAgent.includes('ipad');
-            
-            if (isAndroid || isIos) {
-                // สำหรับมือถือ - ลองใช้ deep link ก่อน
-                const fbDeepLink = "fb://profile/Singla2411";
-                window.location.href = fbDeepLink;
-                
-                // Fallback ถ้า deep link ไม่ทำงาน
-                setTimeout(() => {
-                    window.location.href = fbUrl;
-                }, 1500);
-            } else {
-                // สำหรับเดสก์ทอป - ใช้ URL โดยตรง
-                window.location.href = fbUrl;
-            }
-        }
-
-        // ฟังก์ชันเปิดแผนที่
-        function openMap() {
-            window.location.href = "https://maps.app.goo.gl/MLGPYY6xU5M1KA147";
-        }
-
-        // ฟังก์ชันสำหรับตั้งค่า active nav item
-        function setActive(element) {
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(item => item.classList.remove('active'));
-            element.classList.add('active');
-        }
-    </script>
 
 </body>
 </html>
