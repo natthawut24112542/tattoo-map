@@ -6,149 +6,80 @@
     <title>ณัฐวุฒิ สิงห์ลา (วุฒิ) - Personal Profile</title>
     <style>
         /* รีเซ็ตค่าเริ่มต้น */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            min-height: 100vh;
+            display: flex; justify-content: center; min-height: 100vh;
         }
-
         .profile-container {
-            width: 100%;
-            max-width: 480px;
-            background-color: #ffffff;
-            min-height: 100vh;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            position: relative;
-            padding-bottom: 40px;
+            width: 100%; max-width: 480px; background-color: #ffffff;
+            min-height: 100vh; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative; padding-bottom: 40px;
         }
-
         /* ส่วนรูปหน้าปก (Cover Photo) */
         .cover-photo {
-            width: 100%;
-            height: 220px;
-            background-color: #3b5998; /* สีพื้นหลังสำรองหากรูปยังไม่โหลด */
+            width: 100%; height: 220px; background-color: #3b5998;
         }
-
         .cover-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 100%; height: 100%; object-fit: cover;
         }
-
         /* ส่วนข้อมูลโปรไฟล์ (Profile Header) */
         .profile-header {
-            text-align: center;
-            padding: 0 20px;
-            position: relative;
-            margin-top: -80px;
+            text-align: center; padding: 0 20px; position: relative; margin-top: -80px;
         }
-
         .profile-pic {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 5px solid #ffffff;
-            background-color: #e4e6eb;
-            object-fit: cover;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            width: 160px; height: 160px; border-radius: 50%;
+            border: 5px solid #ffffff; background-color: #e4e6eb;
+            object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.15);
         }
-
         .name {
-            font-size: 26px;
-            font-weight: bold;
-            color: #1c1e21;
-            margin-top: 15px;
-            margin-bottom: 6px;
+            font-size: 26px; font-weight: bold; color: #1c1e21;
+            margin-top: 15px; margin-bottom: 6px;
         }
-
         .bio {
-            font-size: 15px;
-            color: #65676b;
-            line-height: 1.6;
-            margin-bottom: 24px;
+            font-size: 15px; color: #65676b; line-height: 1.6; margin-bottom: 24px;
         }
-
         /* กล่องข้อมูลส่วนตัว (Info Card) */
         .info-card {
-            background-color: #f8f9fa;
-            border-radius: 12px;
-            padding: 18px;
-            margin: 0 20px 24px;
-            text-align: left;
-            border: 1px solid #e4e6eb;
+            background-color: #f8f9fa; border-radius: 12px; padding: 18px;
+            margin: 0 20px 24px; text-align: left; border: 1px solid #e4e6eb;
         }
-
         .info-item {
-            font-size: 15px;
-            color: #1c1e21;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: flex-start;
+            font-size: 15px; color: #1c1e21; margin-bottom: 12px;
+            display: flex; align-items: flex-start;
         }
-
-        .info-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .info-icon {
-            margin-right: 12px;
-            font-size: 18px;
-        }
-
+        .info-item:last-child { margin-bottom: 0; }
+        .info-icon { margin-right: 12px; font-size: 18px; }
         /* ส่วนปุ่มกด (Action Buttons) */
-        .action-buttons {
-            padding: 0 20px;
-        }
-
+        .action-buttons { padding: 0 20px; }
         .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 14px;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 16px;
-            margin-bottom: 12px;
-            border: none;
-            transition: opacity 0.2s ease, transform 0.1s ease;
+            display: flex; align-items: center; justify-content: center;
+            width: 100%; padding: 14px; color: #ffffff; text-decoration: none;
+            border-radius: 10px; font-weight: bold; font-size: 16px;
+            margin-bottom: 12px; border: none; transition: opacity 0.2s ease, transform 0.1s ease;
         }
-
-        .btn:active {
-            opacity: 0.9;
-            transform: scale(0.98);
-        }
-
-        /* สีและไอคอนของปุ่ม */
+        .btn:active { opacity: 0.9; transform: scale(0.98); }
         .btn-call { background-color: #333333; }
         .btn-line { background-color: #06C755; }
         .btn-messenger { background-color: #0084FF; }
         .btn-facebook { background-color: #1877F2; }
-
     </style>
 </head>
 <body>
 
     <div class="profile-container">
         
-        <!-- รูปหน้าปก: ให้บันทึกรูปของคุณเป็นชื่อ cover.jpg ไว้ในโฟลเดอร์เดียวกับเว็บ -->
+        <!-- ส่วนที่ 1: รูปหน้าปก -->
         <div class="cover-photo">
-            <img src="cover.jpg" alt="Cover Photo" onerror="this.style.display='none'">
+            <!-- ลบคำว่า วางลิงก์ที่อยู่รูปภาพปกตรงนี้... ออก แล้วเอาลิงก์ตรงที่คัดลอกมาวางในเครื่องหมายคำพูดแทน -->
+            <img src="วางลิงก์ที่อยู่รูปภาพปกตรงนี้..." alt="Cover Photo" onerror="this.style.display='none'">
         </div>
 
         <div class="profile-header">
-            <!-- รูปโปรไฟล์: ให้บันทึกรูปของคุณเป็นชื่อ profile.jpg ไว้ในโฟลเดอร์เดียวกับเว็บ -->
-            <img src="profile.jpg" alt="Profile Picture" class="profile-pic" onerror="this.src='https://via.placeholder.com/160x160?text=Profile'">
+            <!-- ส่วนที่ 2: รูปโปรไฟล์ -->
+            <!-- ลบคำว่า วางลิงก์ที่อยู่รูปโปรไฟล์ตรงนี้... ออก แล้วเอาลิงก์ตรงที่คัดลอกมาวางในเครื่องหมายคำพูดแทน -->
+            <img src="วางลิงก์ที่อยู่รูปโปรไฟล์ตรงนี้..." alt="Profile Picture" class="profile-pic" onerror="this.src='https://via.placeholder.com/160x160?text=Profile'">
             
             <h1 class="name">ณัฐวุฒิ สิงห์ลา (วุฒิ)</h1>
             <p class="bio">ยินดีต้อนรับสู่หน้าโปรไฟล์ของผมครับ<br>นักพัฒนาซอฟต์แวร์ และผู้หลงใหลในงานอิเล็กทรอนิกส์</p>
