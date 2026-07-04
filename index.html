@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ณัฐวุฒิ สิงห์ลา (วุฒิ) - Personal Profile</title>
     <style>
-        /* รีเซ็ตค่าเริ่มต้น */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -17,41 +16,23 @@
             min-height: 100vh; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             position: relative; padding-bottom: 40px;
         }
-        /* ส่วนรูปหน้าปก (Cover Photo) */
-        .cover-photo {
-            width: 100%; height: 220px; background-color: #3b5998;
-        }
-        .cover-photo img {
-            width: 100%; height: 100%; object-fit: cover;
-        }
-        /* ส่วนข้อมูลโปรไฟล์ (Profile Header) */
-        .profile-header {
-            text-align: center; padding: 0 20px; position: relative; margin-top: -80px;
-        }
+        .cover-photo { width: 100%; height: 220px; background-color: #3b5998; }
+        .cover-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-header { text-align: center; padding: 0 20px; position: relative; margin-top: -80px; }
         .profile-pic {
             width: 160px; height: 160px; border-radius: 50%;
             border: 5px solid #ffffff; background-color: #e4e6eb;
             object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.15);
         }
-        .name {
-            font-size: 26px; font-weight: bold; color: #1c1e21;
-            margin-top: 15px; margin-bottom: 6px;
-        }
-        .bio {
-            font-size: 15px; color: #65676b; line-height: 1.6; margin-bottom: 24px;
-        }
-        /* กล่องข้อมูลส่วนตัว (Info Card) */
+        .name { font-size: 26px; font-weight: bold; color: #1c1e21; margin-top: 15px; margin-bottom: 6px; }
+        .bio { font-size: 15px; color: #65676b; line-height: 1.6; margin-bottom: 24px; }
         .info-card {
             background-color: #f8f9fa; border-radius: 12px; padding: 18px;
             margin: 0 20px 24px; text-align: left; border: 1px solid #e4e6eb;
         }
-        .info-item {
-            font-size: 15px; color: #1c1e21; margin-bottom: 12px;
-            display: flex; align-items: flex-start;
-        }
+        .info-item { font-size: 15px; color: #1c1e21; margin-bottom: 12px; display: flex; align-items: flex-start; }
         .info-item:last-child { margin-bottom: 0; }
         .info-icon { margin-right: 12px; font-size: 18px; }
-        /* ส่วนปุ่มกด (Action Buttons) */
         .action-buttons { padding: 0 20px; }
         .btn {
             display: flex; align-items: center; justify-content: center;
@@ -70,22 +51,17 @@
 
     <div class="profile-container">
         
-        <!-- ส่วนที่ 1: รูปหน้าปก -->
         <div class="cover-photo">
-            <!-- ลบคำว่า วางลิงก์ที่อยู่รูปภาพปกตรงนี้... ออก แล้วเอาลิงก์ตรงที่คัดลอกมาวางในเครื่องหมายคำพูดแทน -->
-            <img src="วางลิงก์ที่อยู่รูปภาพปกตรงนี้..." alt="Cover Photo" onerror="this.style.display='none'">
+            <img src="cover.jpg" alt="Cover Photo" onerror="this.parentNode.style.backgroundColor='#3b5998'">
         </div>
 
         <div class="profile-header">
-            <!-- ส่วนที่ 2: รูปโปรไฟล์ -->
-            <!-- ลบคำว่า วางลิงก์ที่อยู่รูปโปรไฟล์ตรงนี้... ออก แล้วเอาลิงก์ตรงที่คัดลอกมาวางในเครื่องหมายคำพูดแทน -->
-            <img src="วางลิงก์ที่อยู่รูปโปรไฟล์ตรงนี้..." alt="Profile Picture" class="profile-pic" onerror="this.src='https://via.placeholder.com/160x160?text=Profile'">
+            <img src="profile.jpg" alt="Profile Picture" class="profile-pic" onerror="this.src='https://via.placeholder.com/160x160?text=Profile'">
             
             <h1 class="name">ณัฐวุฒิ สิงห์ลา (วุฒิ)</h1>
             <p class="bio">ยินดีต้อนรับสู่หน้าโปรไฟล์ของผมครับ<br>นักพัฒนาซอฟต์แวร์ และผู้หลงใหลในงานอิเล็กทรอนิกส์</p>
         </div>
 
-        <!-- ข้อมูลส่วนตัว -->
         <div class="info-card">
             <div class="info-item">
                 <span class="info-icon">🎂</span>
@@ -101,7 +77,6 @@
             </div>
         </div>
 
-        <!-- ปุ่มติดต่อ -->
         <div class="action-buttons">
             <a href="tel:0646783822" class="btn btn-call">📞 โทร: 064-678-3822</a>
             <a href="https://line.me/ti/p/~w2542m" target="_blank" class="btn btn-line">🟢 เพิ่มเพื่อนผ่าน Line (ID: w2542m)</a>
